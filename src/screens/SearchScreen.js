@@ -1,12 +1,16 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import SearchBar from '../components/SearchBar'
 
 const SearchScreen = () => {
+  const [term, setTerm] = useState("");
+  const onTermSubmit = () => {
+    console.log('submitted');
+  }
   return (
     <View style={styles.background}>
-      <SearchBar/>
-      <Text>Search</Text>
+      <SearchBar term={term} onTermChange={(newTerm)=>setTerm(newTerm)} onTermSubmit={onTermSubmit}/>
+      <Text>{term}</Text>
     </View>
   )
 }
